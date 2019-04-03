@@ -1,18 +1,47 @@
 import { Router } from 'express'
 import torrent from 'torrent-search-api'
 
-torrent.enableProvider('ThePirateBay', 'ExtraTorrent', '1337x', 'Torrentz2')
-torrent.enableProvider('ExtraTorrent')
-torrent.enableProvider('1337x')
-torrent.enableProvider('Torrentz2')
+// torrent.enableProvider('ExtraTorrent')
+// torrent.enableProvider('1337x')
+// torrent.enableProvider('Torrentz2')
+torrent.enableProvider('ThePirateBay')
+
+// torrent.enablePublicProviders()
 
 const routes = Router()
 
 routes.get('/torrent/:query', async (req, res, next) => {
-  console.log(req.params)
   const { query } = req.params
-  const resultQuery = await torrent.search(query, 'All', 50)
-  res.send(resultQuery)
+  const resultQuery = await torrent.search(query, 'All', 10)
+  const array = resultQuery.sort((a, b) => {
+    if (a.seeds < b.seeds) return 1
+    if (a.seeds > b.seeds) return -1
+  })
+  res.send(array)
+})
+
+routes.get('/testetorrent', async (req, res) => {
+  const { query } = req.body
+  const { category } = req.body
+  const { items } = req.body
+
+  const resultQuery = await torrent.search(query, category, items)
+
+  // console.log(resultQuery.map(torrent => torrent.title))
+  // const array = resultQuery.map(result => result.seeds)
+  const array = resultQuery.sort((a, b) => {
+    if (a.seeds < b.seeds) return 1
+    if (a.seeds > b.seeds) return -1
+  })
+  res.send(array)
+})
+
+routes.get('/', (req, res, next) => {
+  const help = {
+    'torrent': '/torrent/something',
+    'status': '/status'
+  }
+  res.sendStatus(200).send(help)
 })
 
 routes.get('/status', async (req, res, next) => {
