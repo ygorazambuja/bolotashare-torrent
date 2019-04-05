@@ -4,8 +4,8 @@ import middlewares from '../middlewares/auth'
 
 const routes = Router()
 
-routes.get('/torrent/:query', TorrentSearch, middlewares)
+routes.get('/torrent/:query', TorrentSearch)
 routes.get('/status', Status, middlewares)
-routes.get('/torrentCustomSearch', TorrentCustomSearch, middlewares)
+routes.get('/torrentCustomSearch', TorrentCustomSearch)
 
 export default routes
