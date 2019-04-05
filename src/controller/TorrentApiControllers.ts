@@ -5,6 +5,8 @@ import torrent from 'torrent-search-api'
 // torrent.enableProvider('Torrentz2')
 
 export async function TorrentSearch (request, response, next) {
+  torrent.enableProvider('ThePirateBay')
+
   const { query } = request.params
   const resultQuery = await torrent.search(query, 'All', 10)
   const array = resultQuery.sort((a, b) => {
@@ -26,6 +28,8 @@ export async function Status (request, response) {
   response.send(Providers)
 }
 export async function TorrentCustomSearch (request, response) {
+  torrent.enableProvider('ThePirateBay')
+
   let { query, category, items } = request.body
 
   if (!query) return response.send({ err: 'error, query null' })
