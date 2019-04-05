@@ -5,7 +5,7 @@ import torrent from 'torrent-search-api'
 // torrent.enableProvider('Torrentz2')
 
 export async function TorrentSearch (request, response, next) {
-  await torrent.enableProvider('ThePirateBay')
+  torrent.enableProvider('ThePirateBay')
 
   const { query } = request.params
   const resultQuery = await torrent.search(query, 'All', 10)
