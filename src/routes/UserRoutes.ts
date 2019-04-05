@@ -1,10 +1,12 @@
 import { Router } from 'express'
 import {
-  UserCreate
+  UserCreate, AuthenticateUsername, getAllUsers
 } from '../controller/UserController'
 
 const routes = Router()
 
-routes.post('/user', UserCreate)
+routes.post('/createUser', UserCreate)
+routes.post('/authenticate', AuthenticateUsername)
+routes.get('/users', getAllUsers)
 
 export default routes
