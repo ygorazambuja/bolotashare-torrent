@@ -52,3 +52,18 @@ export async function GetProviders (request, response) {
   const providersInformation = await torrent.getProviders()
   response.send(providersInformation)
 }
+
+export async function searchTorrent (request, response) {
+  torrent.enableProvider('ThePirateBay')
+
+  let { query, items } = request.params
+
+  if (!query) response.send({ error: 'Query cannot be null' })
+  if (!items) items = 20
+  const resultQuery = await torrent.search(query, 'All', items)
+  const array = resultQuery.sort((a, b) => {
+    if (a.seeds < b.seeds) return 1
+    if (a.seeds > b.seeds) return -1
+  })
+  response.send(array)
+}

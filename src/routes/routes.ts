@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import torrentRoutes from './TorrentRoutes'
 import userRoutes from './UserRoutes'
+
 const routes = Router()
 
 routes.get('/', (req, res, next) => {
@@ -9,7 +10,7 @@ routes.get('/', (req, res, next) => {
     'status': '/status',
     'customSearch': { link: '/torrentCustomSearch',
       'props as Json': {
-        query: 'Your Search', category: 'All, Movies', items: 'Amount of items you wanna search'
+        query: 'Your Search', category: 'All, Movies, Tv', items: 'Amount of items you wanna search'
       } }
   }
   res.send(help)
