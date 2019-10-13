@@ -1,9 +1,9 @@
-import * as bcryptjs from 'bcryptjs'
-import * as mongoose from 'mongoose'
+import * as bcryptjs from "bcryptjs";
+import * as mongoose from "mongoose";
 
 interface IUser extends mongoose.Document {
-    username: string;
-    password: string;
+  username: string;
+  password: string;
 }
 
 const UserSchema = new mongoose.Schema({
@@ -17,11 +17,11 @@ const UserSchema = new mongoose.Schema({
     type: String,
     unique: true
   }
-})
+});
 
-UserSchema.pre('save', async function (next) {
-  const hash = await bcryptjs.hash(this.password, 10)
-  this.password = hash
-})
+UserSchema.pre("save", async function(next) {
+  const hash = await bcryptjs.hash(this.password, 10);
+  this.password = hash;
+});
 
-export default mongoose.model<IUser>('User', UserSchema)
+export default mongoose.model<IUser>("User", UserSchema);
