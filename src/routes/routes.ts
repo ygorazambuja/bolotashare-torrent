@@ -1,6 +1,6 @@
 import { Router } from "express";
 import torrentRoutes from "./TorrentRoutes";
-// import userRoutes from "./UserRoutes";
+import userRoutes from "./UserRoutes";
 
 const routes = Router();
 
@@ -21,6 +21,6 @@ routes.get("/", (req, res, next) => {
 });
 
 routes.use(torrentRoutes);
-// routes.use(userRoutes)
+routes.use(userRoutes);
 
 export default routes;
