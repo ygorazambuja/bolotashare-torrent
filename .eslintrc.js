@@ -1,7 +1,7 @@
 module.exports = {
-  parser:  '@typescript-eslint/parser',  // Specifies the ESLint parser
-  extends:  [
-    'plugin:@typescript-eslint/recommended',  // Uses the recommended rules from the @typescript-eslint/eslint-plugin
+  parser: '@typescript-eslint/parser', // Specifies the ESLint parser
+  extends: [
+    'plugin:@typescript-eslint/recommended' // Uses the recommended rules from the @typescript-eslint/eslint-plugin
   ],
   env: {
     es6: true,
@@ -17,5 +17,7 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module'
   },
-  rules: {}
+  rules: {
+    'space-before-function-paren': ['error', 'never']
+  }
 }

@@ -1,12 +1,12 @@
-"use strict"; function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }Object.defineProperty(exports, "__esModule", {value: true});var _express = require('express');
-var _torrentsearchapi = require('torrent-search-api'); var _torrentsearchapi2 = _interopRequireDefault(_torrentsearchapi);
+'use strict'; function _interopRequireDefault (obj) { return obj && obj.__esModule ? obj : { default: obj } }Object.defineProperty(exports, '__esModule', { value: true }); var _express = require('express')
+var _torrentsearchapi = require('torrent-search-api'); var _torrentsearchapi2 = _interopRequireDefault(_torrentsearchapi)
 
 _torrentsearchapi2.default.enableProvider('ThePirateBay', 'ExtraTorrent', '1337x', 'Torrentz2')
 _torrentsearchapi2.default.enableProvider('ExtraTorrent')
 _torrentsearchapi2.default.enableProvider('1337x')
 _torrentsearchapi2.default.enableProvider('Torrentz2')
 
-const routes = _express.Router.call(void 0, )
+const routes = _express.Router.call(void 0)
 
 routes.get('/torrent/:query', async (req, res, next) => {
   console.log(req.params)
@@ -28,4 +28,4 @@ routes.get('/status', async (req, res, next) => {
   res.send(Providers)
 })
 
-exports. default = routes
+exports.default = routes

@@ -1,14 +1,14 @@
-import { Router } from "express";
+import { Router } from 'express'
 import {
   UserCreate,
   AuthenticateUsername,
   getAllUsers
-} from "../controller/UserController";
+} from '../controller/UserController'
 
-const routes = Router();
+const routes = Router()
 
-routes.post("/createUser", UserCreate);
-routes.post("/authenticate", AuthenticateUsername);
-routes.get("/users", getAllUsers);
+routes.post('/createUser', UserCreate)
+routes.post('/authenticate', AuthenticateUsername)
+routes.get('/users', getAllUsers)
 
-export default routes;
+export default routes
