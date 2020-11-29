@@ -1,26 +1,15 @@
-import { Router } from 'express'
+import { Router, Request, Response } from 'express'
 import torrentRoutes from './TorrentRoutes'
-import userRoutes from './UserRoutes'
-
 const routes = Router()
 
-routes.get('/', (req, res, next) => {
+routes.get('/', (_: Request, response: Response) => {
   const help = {
     torrent: '/torrent/something',
-    status: '/status',
-    customSearch: {
-      link: '/torrentCustomSearch',
-      'props as Json': {
-        query: 'Your Search',
-        category: 'All, Movies, Tv',
-        items: 'Amount of items you wanna search'
-      }
-    }
+    status: '/status'
   }
-  res.send(help)
+  response.send(help)
 })
 
 routes.use(torrentRoutes)
-routes.use(userRoutes)
 
 export default routes

@@ -1,10 +1,9 @@
 import routes from './routes/routes'
 import express from 'express'
-import mongoose from 'mongoose'
 import cors from 'cors'
 
 class App {
-  public express: express.Application;
+  public express: express.Application
   public constructor() {
     require('dotenv').config()
     this.express = express()
@@ -20,11 +19,6 @@ class App {
 
   private routes(): void {
     this.express.use(routes)
-  }
-
-  private database(): void {
-    mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true })
-    mongoose.set('useCreateIndex', true)
   }
 }
 
